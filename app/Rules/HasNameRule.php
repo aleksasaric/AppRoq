@@ -20,8 +20,7 @@ class HasNameRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        Str::contains($this->name, $value->getClientOriginalName());
-        if (!Str::contains($this->name, $value->getClientOriginalName())) {
+        if (Str::contains($this->name, $value->getClientOriginalName())) {
             $fail('The :attribute must have name: ' . $this->name);
         }
     }
