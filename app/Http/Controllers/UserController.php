@@ -18,17 +18,4 @@ class UserController
                 }
             ])->get();
     }
-
-    public function task2()
-    {
-        $country = 'Canada';
-
-        return User::with(['companies' => function($query) use($country)
-        {
-            $query->whereHas('country', function($query) use ($country)  {
-                $query->where('name', $country);
-            });
-        }
-        ])->get();
-    }
 }
